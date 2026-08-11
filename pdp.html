@@ -87,10 +87,15 @@
               alt="${product.name} 3D Model" 
               auto-rotate 
               camera-controls 
-              shadow-intensity="1"
+              rotation-per-second="15deg"
+              interaction-prompt="none"
+              shadow-intensity="1.5"
+              shadow-softness="0.5"
+              exposure="1.4"
+              camera-orbit="45deg 75deg 105%"
               variant-name="midnight"
               loading="lazy"
-              style="filter: grayscale(100%) contrast(1.1) brightness(0.9);">
+              style="filter: grayscale(100%) contrast(1.25) brightness(1.15);">
             </model-viewer>
           `;
         } else {
