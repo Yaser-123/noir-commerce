@@ -8,32 +8,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const subtotalVal = document.getElementById('subtotal-val');
   const totalVal = document.getElementById('total-val');
 
-  if (cart.items.length === 0) {
-    summaryItems.innerHTML = '<p class="tech-text" style="text-align:center; padding: 20px;">CART IS EMPTY</p>';
-  } else {
-    summaryItems.innerHTML = cart.items.map(item => `
-      <div class="summary-item">
-        <div style="display:flex; gap: 16px; align-items:center;">
-          <div class="tech-text" style="color: var(--color-text-secondary);">
-            ${item.model3d ? '[3D]' : '[IMG]'}
+  function renderCart() {
+    if (cart.items.length === 0) {
+      summaryItems.innerHTML = '<p class="tech-text" style="text-align:center; padding: 20px;">CART IS EMPTY</p>';
+    } else {
+      summaryItems.innerHTML = cart.items.map((item, index) => `
+        <div class="summary-item">
+          <div style="display:flex; gap: 16px; align-items:center;">
+            <img src="${item.image}" alt="${item.name}" loading="lazy" style="width: 60px; height: 60px; object-fit: contain; background-color: var(--color-background-base); border: 1px solid var(--color-border-subtle); padding: 4px;">
+            <div class="tech-text">
+              <div>${item.name}</div>
+              <div style="color: var(--color-text-secondary); margin-top: 4px;">US ${item.size} / QTY ${item.quantity}</div>
+              <button type="button" class="remove-btn" data-index="${index}" style="background:none; border:none; color:var(--color-text-secondary); cursor:pointer; font-family:var(--font-family-mono); padding:0; margin-top: 8px; text-decoration: underline; font-size: 10px;">REMOVE</button>
+            </div>
           </div>
-          <div class="tech-text">
-            <div>${item.name}</div>
-            <div style="color: var(--color-text-secondary); margin-top: 4px;">US ${item.size} / QTY ${item.quantity}</div>
-          </div>
+          <div class="tech-text">$${(item.price * item.quantity).toFixed(2)}</div>
         </div>
-        <div class="tech-text">$${(item.price * item.quantity).toFixed(2)}</div>
-      </div>
-    `).join('');
+      `).join('');
+    }
+
+    const count = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+    const total = cart.getTotal().toFixed(2);
+    
+    summaryCount.textContent = `${count} ITEMS`;
+    summaryTotal.textContent = `$${total}`;
+    subtotalVal.textContent = `$${total}`;
+    totalVal.textContent = `$${total}`;
+
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const index = e.target.getAttribute('data-index');
+        const item = cart.items[index];
+        cart.removeItem(item.id, item.size);
+        renderCart();
+      });
+    });
   }
 
-  const count = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-  const total = cart.getTotal().toFixed(2);
-  
-  summaryCount.textContent = `${count} ITEMS`;
-  summaryTotal.textContent = `$${total}`;
-  subtotalVal.textContent = `$${total}`;
-  totalVal.textContent = `$${total}`;
+  renderCart();
 
   // Form Validation
   const form = document.getElementById('checkout-form');
