@@ -91,6 +91,15 @@
   border-color: var(--color-primary);
 }
 
+.error-state {
+  border-color: var(--color-error) !important;
+  color: var(--color-error);
+}
+
+.error-msg {
+  color: var(--color-error);
+}
+
 .full-width {
   width: 100%;
   padding: var(--spacing-4);

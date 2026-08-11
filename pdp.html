@@ -87,17 +87,34 @@
               alt="${product.name} 3D Model" 
               auto-rotate 
               camera-controls 
-              shadow-intensity="1">
+              shadow-intensity="1"
+              variant-name="midnight"
+              loading="lazy"
+              style="filter: grayscale(100%) contrast(1.1) brightness(0.9);">
             </model-viewer>
           `;
         } else {
-          mediaContainer.innerHTML = `<img src="${product.images.hero}" alt="${product.name}">`;
+          mediaContainer.innerHTML = `<img src="${product.images.hero}" alt="${product.name}" loading="lazy">`;
         }
         
+        const sizeError = document.createElement('div');
+        sizeError.className = 'error-msg tech-text';
+        sizeError.style.display = 'none';
+        sizeError.style.marginTop = 'var(--spacing-2)';
+        sizeError.textContent = 'PLEASE SELECT A SIZE';
+        document.querySelector('.size-selector').appendChild(sizeError);
+        
+        const sizeSelect = document.getElementById('size-select');
+        sizeSelect.addEventListener('change', () => {
+          sizeError.style.display = 'none';
+          sizeSelect.classList.remove('error-state');
+        });
+
         document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-          const size = document.getElementById('size-select').value;
+          const size = sizeSelect.value;
           if(!size) {
-            alert('Please select a size to proceed.');
+            sizeError.style.display = 'block';
+            sizeSelect.classList.add('error-state');
             return;
           }
           cart.addItem(product.id, size, 1);
