@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Product Detail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pdp.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  
+  <main class="pdp-main">
+    <div class="container pdp-grid">
+      <!-- Media Section -->
+      <div class="pdp-media" id="pdp-media-container">
+        <!-- Injected via JS -->
+      </div>
+      
+      <!-- Info Section -->
+      <div class="pdp-info">
+        <div class="pdp-info-header">
+          <p class="tech-text" id="pdp-category">SILHOUETTE</p>
+          <h1 class="display-title" id="pdp-title">LOADING...</h1>
+          <p class="pdp-price tech-text" id="pdp-price">$0.00</p>
+        </div>
+        
+        <p class="pdp-description" id="pdp-description"></p>
+        
+        <div class="pdp-specs tech-text">
+          <div class="spec-row">
+            <span>MATERIALS:</span>
+            <span id="pdp-materials"></span>
+          </div>
+          <div class="spec-row">
+            <span>COLORWAY:</span>
+            <span id="pdp-colors"></span>
+          </div>
+        </div>
+        
+        <div class="pdp-actions">
+          <div class="size-selector">
+            <select id="size-select" class="tech-text">
+              <option value="" disabled selected>SELECT SIZE (US)</option>
+              <option value="8">US 8</option>
+              <option value="9">US 9</option>
+              <option value="10">US 10</option>
+              <option value="11">US 11</option>
+              <option value="12">US 12</option>
+            </select>
+          </div>
+          <button id="add-to-cart-btn" class="btn-primary full-width">ADD TO CART</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { cart } from './js/cart.js';
+    import { products } from './js/data.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = urlParams.get('id') || 'nr-01-crb'; // Fallback to first product
+      
+      const product = products.find(p => p.id === productId);
+      if(product) {
+        document.title = `NØIR | ${product.name}`;
+        document.getElementById('pdp-title').textContent = product.name;
+        document.getElementById('pdp-price').textContent = `$${product.price.toFixed(2)}`;
+        document.getElementById('pdp-description').textContent = product.description;
+        document.getElementById('pdp-materials').textContent = product.materials.join(' / ');
+        document.getElementById('pdp-colors').textContent = product.colors.join(' / ');
+        
+        const mediaContainer = document.getElementById('pdp-media-container');
+        if(product.model3d) {
+          mediaContainer.innerHTML = `
+            <model-viewer 
+              src="${product.model3d}" 
+              alt="${product.name} 3D Model" 
+              auto-rotate 
+              camera-controls 
+              shadow-intensity="1">
+            </model-viewer>
+          `;
+        } else {
+          mediaContainer.innerHTML = `<img src="${product.images.hero}" alt="${product.name}">`;
+        }
+        
+        document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+          const size = document.getElementById('size-select').value;
+          if(!size) {
+            alert('Please select a size to proceed.');
+            return;
+          }
+          cart.addItem(product.id, size, 1);
+          window.location.href = 'checkout.html'; // Direct to checkout/cart page flow
+        });
+      }
+      
+      loadFooter();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Silhouettes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/archive.css">
+</head>
+<body>
+  
+  <main class="archive-main">
+    <div class="container archive-header">
+      <h1 class="display-title">SILHOUETTES</h1>
+      <div class="archive-filters tech-text">
+        <span>ALL</span> /
+        <span class="inactive">FW26</span> /
+        <span class="inactive">ARCHIVE</span>
+      </div>
+    </div>
+
+    <div class="container product-grid" id="product-grid">
+      <!-- Products injected via JS -->
+    </div>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { cart } from './js/cart.js';
+    import { products } from './js/data.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      
+      const grid = document.getElementById('product-grid');
+      products.forEach(product => {
+        const card = document.createElement('a');
+        card.href = `pdp.html?id=${product.id}`;
+        card.className = 'product-card';
+        card.innerHTML = `
+          <div class="product-image-placeholder">
+            ${product.model3d ? '<span class="tech-text 3d-badge">[ 3D ]</span>' : ''}
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <span class="product-price tech-text">$${product.price.toFixed(2)}</span>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+
+      loadFooter();
+    });
+  </script>
+</body>
+</html>

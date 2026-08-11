@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Architectural Footwear</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/index.css">
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+  
+  <main class="landing-main">
+    <section class="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="tech-text">SILHOUETTE 01</p>
+          <h1 class="display-title">ARCHITECTURAL<br>PRECISION</h1>
+          <a href="pdp.html?id=nr-01-crb" class="btn-primary">EXPLORE NR-01</a>
+        </div>
+        
+        <div class="hero-model-container">
+          <model-viewer 
+            src="assets/3d/sneaker.glb" 
+            alt="NR-01 Carbon 3D Model" 
+            auto-rotate 
+            camera-controls 
+            rotation-per-second="30deg"
+            interaction-prompt="none"
+            shadow-intensity="1"
+            shadow-softness="1"
+            exposure="1">
+          </model-viewer>
+          <div class="model-annotation tech-text">
+            <span>DRAG TO ROTATE</span>
+            <span>SCROLL TO ZOOM</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection-teaser">
+      <div class="container">
+        <div class="teaser-header">
+          <h2 class="section-title">THE ARCHIVE</h2>
+          <a href="silhouettes.html" class="btn-secondary">VIEW ALL</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { cart } from './js/cart.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      loadFooter();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Secure Checkout</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/checkout.css">
+</head>
+<body>
+  
+  <header class="checkout-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">NØIR</a>
+      <span class="tech-text" style="color: var(--color-text-secondary);">SECURE CHECKOUT</span>
+    </div>
+  </header>
+
+  <main class="checkout-main container">
+    <div class="checkout-grid">
+      
+      <!-- Form Section -->
+      <div class="checkout-form-section">
+        <form id="checkout-form">
+          <!-- 01 CUSTOMER -->
+          <div class="form-group">
+            <h2 class="form-section-title">01 CUSTOMER</h2>
+            <input type="email" class="form-input tech-text" placeholder="EMAIL ADDRESS" required>
+          </div>
+          
+          <!-- 02 SHIPPING -->
+          <div class="form-group">
+            <h2 class="form-section-title">02 SHIPPING</h2>
+            <div class="input-stack">
+              <input type="text" class="form-input tech-text" placeholder="FULL NAME" required>
+              <input type="text" class="form-input tech-text" placeholder="STREET ADDRESS" required>
+              <input type="text" class="form-input tech-text" placeholder="CITY" required>
+              <input type="text" class="form-input tech-text" placeholder="COUNTRY" required>
+              <input type="text" class="form-input tech-text" placeholder="ZIP CODE" required>
+            </div>
+          </div>
+          
+          <!-- 03 PAYMENT -->
+          <div class="form-group">
+            <h2 class="form-section-title">03 PAYMENT</h2>
+            <div class="input-stack">
+              <input type="text" class="form-input tech-text" placeholder="CARDHOLDER NAME" required>
+              <input type="text" class="form-input tech-text" placeholder="CARD NUMBER" id="cc-num" pattern="\\d{16}" title="16 digit card number" required>
+              <div class="input-row">
+                <input type="text" class="form-input tech-text" placeholder="MM/YY" pattern="\\d{2}/\\d{2}" title="MM/YY format" required>
+                <input type="text" class="form-input tech-text error-target" placeholder="CVV" id="cc-cvv" pattern="\\d{3,4}" required>
+              </div>
+            </div>
+            <div id="payment-error" class="error-msg tech-text" style="display:none;">INVALID CVV</div>
+          </div>
+          
+          <div class="checkout-actions">
+            <button type="submit" class="btn-primary full-width">AUTHORIZE PAYMENT</button>
+            <a href="javascript:history.back()" class="btn-secondary full-width text-center" style="display: block; margin-top: var(--spacing-4);">CANCEL / BACK</a>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Order Summary Section -->
+      <div class="order-summary-section">
+        <div class="summary-card">
+          <div class="summary-header">
+            <span class="tech-text" id="summary-count">0 ITEMS</span>
+            <span class="tech-text" id="summary-total">$0.00</span>
+          </div>
+          <div class="summary-items" id="summary-items">
+            <!-- Injected via JS -->
+          </div>
+          <div class="summary-totals">
+            <div class="totals-row tech-text">
+              <span>SUBTOTAL</span>
+              <span id="subtotal-val">$0.00</span>
+            </div>
+            <div class="totals-row tech-text">
+              <span>SHIPPING</span>
+              <span>COMPLIMENTARY</span>
+            </div>
+            <div class="totals-row tech-text total-final">
+              <span>TOTAL</span>
+              <span id="total-val">$0.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <script type="module" src="js/checkout.js"></script>
+</body>
+</html>

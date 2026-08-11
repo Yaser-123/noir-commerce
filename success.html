@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Order Success</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .success-main {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--spacing-6);
+    }
+    
+    .success-icon {
+      font-size: var(--spacing-16);
+      color: var(--color-primary);
+      margin-bottom: var(--spacing-6);
+    }
+    
+    .display-title {
+      font-size: var(--spacing-12);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--spacing-4);
+    }
+    
+    .success-meta {
+      font-family: var(--font-family-mono);
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--spacing-12);
+      letter-spacing: 0.1em;
+    }
+  </style>
+</head>
+<body>
+  
+  <header class="checkout-header" style="position: absolute; top:0; width: 100%; padding: var(--spacing-6); border-bottom: 1px solid var(--color-border-subtle);">
+    <div class="container header-inner" style="display: flex; justify-content: center;">
+      <a href="index.html" class="logo">NØIR</a>
+    </div>
+  </header>
+
+  <main class="success-main">
+    <div class="success-icon">✓</div>
+    <h1 class="display-title">AUTHORIZATION<br>COMPLETE</h1>
+    <p class="success-meta">ORDER NO. #NR-89410-X<br>CONFIRMATION SENT TO EMAIL</p>
+    
+    <a href="index.html" class="btn-primary" style="text-decoration: none; display: inline-block;">RETURN TO ORIGIN</a>
+  </main>
+
+</body>
+</html>
