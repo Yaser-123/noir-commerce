@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Engineering & Materials</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/engineering.css">
+</head>
+<body>
+  
+  <main class="engineering-main">
+    <div class="container eng-hero">
+      <h1 class="display-title scroll-fade">COMPUTATIONAL<br>MATERIAL<br>SCIENCE</h1>
+      <p class="eng-intro tech-text scroll-fade">Beyond traditional cobbling, NØIR treats footwear as structural architecture. Every panel, fiber, and void is mathematically calculated for stress distribution, thermal regulation, and stark aesthetic impact.</p>
+    </div>
+
+    <div class="container">
+      <section class="eng-section scroll-fade">
+        <div class="eng-content">
+          <h2 class="section-title">MATTE CARBON COMPOSITE</h2>
+          <p class="body-text" style="color: var(--color-text-secondary); margin-top: var(--spacing-6); font-size: 16px; line-height: 1.6;">Utilized in the NR-01, our proprietary matte carbon fiber mesh provides a rigidity-to-weight ratio previously reserved for hypercars. The matte finish absorbs light, creating a void-like visual density.</p>
+          <div class="eng-specs tech-text">
+            <div class="spec-item">
+              <span class="spec-label">TENSILE STRENGTH</span>
+              <span class="spec-value">1200 MPa</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">WEIGHT / M2</span>
+              <span class="spec-value">180g</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">LIGHT ABSORPTION</span>
+              <span class="spec-value">94%</span>
+            </div>
+          </div>
+        </div>
+        <div class="eng-image-wrapper">
+          <img src="assets/images/nr-01-hero.jpg" alt="Matte Carbon Material" loading="lazy">
+        </div>
+      </section>
+
+      <section class="eng-section reverse scroll-fade">
+        <div class="eng-content">
+          <h2 class="section-title">TRANSLUCENT TPU EXOSKELETON</h2>
+          <p class="body-text" style="color: var(--color-text-secondary); margin-top: var(--spacing-6); font-size: 16px; line-height: 1.6;">Engineered for the NR-03 Frost, this high-density polymer structure locks the foot in place while remaining optically clear. It exposes the inner architectural mesh, turning structural necessity into an aesthetic centerpiece.</p>
+          <div class="eng-specs tech-text">
+            <div class="spec-item">
+              <span class="spec-label">OPACITY</span>
+              <span class="spec-value">15%</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">FLEX FATIGUE</span>
+              <span class="spec-value">1M+ CYCLES</span>
+            </div>
+          </div>
+        </div>
+        <div class="eng-image-wrapper">
+          <img src="assets/images/nr-03-hero.jpg" alt="Translucent TPU" loading="lazy">
+        </div>
+      </section>
+
+      <section class="eng-section scroll-fade">
+        <div class="eng-content">
+          <h2 class="section-title">MILLED TACTICAL HARDWARE</h2>
+          <p class="body-text" style="color: var(--color-text-secondary); margin-top: var(--spacing-6); font-size: 16px; line-height: 1.6;">Featured prominently on our heavy-duty silhouettes like the NR-06 Titan. Our buckles, zips, and structural harnesses are CNC-milled from aerospace-grade aluminum and anodized for extreme corrosion resistance.</p>
+          <div class="eng-specs tech-text">
+            <div class="spec-item">
+              <span class="spec-label">ALLOY</span>
+              <span class="spec-value">ALUMINUM 7075-T6</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">FINISH</span>
+              <span class="spec-value">HARD-COAT ANODIZED</span>
+            </div>
+          </div>
+        </div>
+        <div class="eng-image-wrapper">
+          <img src="assets/images/nr-06-hero.jpg" alt="Tactical Hardware" loading="lazy">
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { cart } from './js/cart.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -15% 0px' });
+
+      document.querySelectorAll('.scroll-fade').forEach(el => {
+        observer.observe(el);
+      });
+
+      loadFooter();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | The Legacy Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/archive-museum.css">
+</head>
+<body>
+  
+  <main class="museum-main">
+    <div class="container museum-header">
+      <h1 class="display-title scroll-fade">THE LEGACY</h1>
+      <p class="museum-intro tech-text scroll-fade">A curation of foundational silhouettes that defined the architectural methodology of NØIR. These models represent the evolution of our computational design language.</p>
+    </div>
+
+    <div class="container">
+      <div class="museum-timeline" id="timeline-container">
+        <!-- Injected via JS -->
+      </div>
+    </div>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { products } from './js/data.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      
+      const container = document.getElementById('timeline-container');
+      
+      products.forEach((product, index) => {
+        const isAlt = index % 2 !== 0;
+        const entry = document.createElement('div');
+        entry.className = `museum-entry scroll-fade ${isAlt ? 'alt' : ''}`;
+        
+        entry.innerHTML = `
+          <div class="museum-image">
+            <a href="pdp.html?id=${product.id}">
+              <img src="${product.images.hero}" alt="${product.name}" loading="lazy">
+            </a>
+          </div>
+          <div class="museum-details">
+            <div class="tech-text" style="margin-bottom: var(--spacing-4);">NO. ${String(index + 1).padStart(2, '0')}</div>
+            <h2 class="display-title"><a href="pdp.html?id=${product.id}" style="color:inherit;">${product.name}</a></h2>
+            <p class="body-text" style="color: var(--color-text-secondary); line-height: 1.6;">${product.description}</p>
+            
+            <div class="museum-specs tech-text">
+              <div class="spec-block">
+                <span style="color: var(--color-text-secondary);">PRIMARY MAT.</span>
+                <span style="color: var(--color-primary);">${product.materials[0]}</span>
+              </div>
+              <div class="spec-block">
+                <span style="color: var(--color-text-secondary);">EDITION</span>
+                <span style="color: var(--color-primary);">ARCHIVED</span>
+              </div>
+            </div>
+          </div>
+        `;
+        container.appendChild(entry);
+      });
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -15% 0px' });
+
+      document.querySelectorAll('.scroll-fade').forEach(el => {
+        observer.observe(el);
+      });
+
+      loadFooter();
+    });
+  </script>
+</body>
+</html>
