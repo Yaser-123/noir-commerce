@@ -102,9 +102,58 @@
 .summary-item {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: var(--spacing-4) 0;
   border-bottom: 1px solid var(--color-border-subtle);
+  margin-bottom: var(--spacing-4);
+}
+
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background-color: var(--color-background-base);
+  border: 1px solid var(--color-border-subtle);
+  padding: var(--spacing-2);
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  border: 1px solid var(--color-border-strong);
+  padding: 2px var(--spacing-2);
+}
+
+.qty-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-family: var(--font-family-mono);
+  padding: 0 var(--spacing-1);
+  transition: color 0.2s;
+}
+
+.qty-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  font-family: var(--font-family-mono);
+  padding: 0;
+  margin-top: var(--spacing-3);
+  text-decoration: underline;
+  font-size: 11px;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: var(--color-error);
 }
 
 .summary-totals {

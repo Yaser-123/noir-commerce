@@ -55,6 +55,10 @@
 }
 .footer-links a {
   color: var(--color-text-secondary);
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--color-primary);
 }
 @media (max-width: 768px) {
   .main-nav {
