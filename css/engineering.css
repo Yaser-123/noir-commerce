@@ -5,6 +5,10 @@
 }
 
 .eng-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-16);
+  align-items: center;
   margin-bottom: var(--spacing-32);
   border-bottom: 1px solid var(--color-border-subtle);
   padding-bottom: var(--spacing-16);
@@ -84,6 +88,9 @@
 }
 
 @media (max-width: 768px) {
+  .eng-hero {
+    grid-template-columns: 1fr;
+  }
   .eng-section {
     grid-template-columns: 1fr;
   }
