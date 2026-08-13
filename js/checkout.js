@@ -43,6 +43,21 @@ document.addEventListener('DOMContentLoaded', () => {
     subtotalVal.textContent = `$${total}`;
     totalVal.textContent = `$${total}`;
 
+    const authBtn = document.querySelector('.checkout-actions .btn-primary');
+    if (cart.items.length === 0) {
+      if(authBtn) {
+        authBtn.disabled = true;
+        authBtn.style.opacity = '0.3';
+        authBtn.style.cursor = 'not-allowed';
+      }
+    } else {
+      if(authBtn) {
+        authBtn.disabled = false;
+        authBtn.style.opacity = '1';
+        authBtn.style.cursor = 'pointer';
+      }
+    }
+
     document.querySelectorAll('.qty-minus').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const id = e.target.getAttribute('data-id');

@@ -5,8 +5,8 @@ export function loadHeader() {
         <a href="index.html" class="logo">NØIR</a>
         <nav class="main-nav">
           <a href="silhouettes.html">SILHOUETTES</a>
-          <a href="#">ENGINEERING</a>
-          <a href="#">ARCHIVE</a>
+          <a href="index.html#engineering">ENGINEERING</a>
+          <a href="index.html#archive">ARCHIVE</a>
         </nav>
         <div class="header-actions">
           <a href="checkout.html" class="cart-btn tech-text">CART [<span id="cart-count">0</span>]</a>
