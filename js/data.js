@@ -2,7 +2,7 @@ export const products = [
   {
     id: "nr-01-crb",
     name: "NR-01 CARBON",
-    price: 895.00,
+    price: 76000.00,
     description: "The foundational architectural silhouette. Engineered with matte carbon-fiber overlays, breathable technical mesh, and a precision-milled structural sole.",
     category: "SILHOUETTE",
     colors: ["Carbon", "Obsidian"],
@@ -16,7 +16,7 @@ export const products = [
   {
     id: "nr-02-vth",
     name: "NR-02 VOID",
-    price: 920.00,
+    price: 78000.00,
     description: "An evolution in structural minimalism. The Void features an integrated lacing system hidden beneath a seamless matte synthetic shroud.",
     category: "SILHOUETTE",
     colors: ["Void Black"],
@@ -30,7 +30,7 @@ export const products = [
   {
     id: "nr-03-fst",
     name: "NR-03 FROST",
-    price: 1150.00,
+    price: 97000.00,
     description: "A stark contrast. Engineered for high visibility and structural integrity, utilizing translucent overlays and frost-white technical fabrics.",
     category: "SILHOUETTE",
     colors: ["Frost White"],
@@ -44,7 +44,7 @@ export const products = [
   {
     id: "nr-04-apx",
     name: "NR-04 APEX",
-    price: 1350.00,
+    price: 114000.00,
     description: "High-top aggressive architectural sneaker boot. Engineered with heavy tread and tactical hardware for uncompromised utility.",
     category: "SILHOUETTE",
     colors: ["Gunmetal Black"],
@@ -57,7 +57,7 @@ export const products = [
   {
     id: "nr-05-flw",
     name: "NR-05 FLOW",
-    price: 680.00,
+    price: 57000.00,
     description: "Aerodynamic laceless luxury techwear. Fluid lines and minimalistic slip-on construction for ultimate ease of movement.",
     category: "SILHOUETTE",
     colors: ["Charcoal Grey"],
@@ -70,7 +70,7 @@ export const products = [
   {
     id: "nr-06-ttn",
     name: "NR-06 TITAN",
-    price: 1850.00,
+    price: 157000.00,
     description: "Massive brutalist ultra-chunky techwear boot. Supported by an exo-skeleton frame for unparalleled stability.",
     category: "SILHOUETTE",
     colors: ["Cybernetic Black"],

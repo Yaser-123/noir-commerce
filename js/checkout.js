@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="tech-text">
               <div style="font-weight: 600;">${item.name}</div>
               <div style="color: var(--color-text-secondary); margin-top: 8px; display: flex; align-items: center; gap: 12px;">
-                <span>US ${item.size}</span>
+                <span>IND ${item.size}</span>
                 <span style="color: var(--color-border-strong);">|</span>
                 <div class="qty-controls">
                   <button type="button" class="qty-btn qty-minus" data-id="${item.id}" data-size="${item.size}">-</button>
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <button type="button" class="remove-btn" data-id="${item.id}" data-size="${item.size}">REMOVE ITEM</button>
             </div>
           </div>
-          <div class="tech-text" style="font-weight: 600;">$${(item.price * item.quantity).toFixed(2)}</div>
+          <div class="tech-text" style="font-weight: 600;">₹${(item.price * item.quantity).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</div>
         </div>
       `).join('');
     }
@@ -39,9 +39,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const total = cart.getTotal().toFixed(2);
     
     summaryCount.textContent = `${count} ITEMS`;
-    summaryTotal.textContent = `$${total}`;
-    subtotalVal.textContent = `$${total}`;
-    totalVal.textContent = `$${total}`;
+    summaryTotal.textContent = `₹${parseFloat(total).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    subtotalVal.textContent = `₹${parseFloat(total).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+    totalVal.textContent = `₹${parseFloat(total).toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
 
     const authBtn = document.querySelector('.checkout-actions .btn-primary');
     if (cart.items.length === 0) {

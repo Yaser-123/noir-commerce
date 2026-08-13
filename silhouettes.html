@@ -48,7 +48,7 @@
           </div>
           <div class="product-info">
             <h3 class="product-name">${product.name}</h3>
-            <span class="product-price tech-text">$${product.price.toFixed(2)}</span>
+            <span class="product-price tech-text">₹${product.price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}</span>
           </div>
         `;
         grid.appendChild(card);

@@ -26,7 +26,7 @@
         <div class="pdp-info-header">
           <p class="tech-text" id="pdp-category">SILHOUETTE</p>
           <h1 class="display-title" id="pdp-title">LOADING...</h1>
-          <p class="pdp-price tech-text" id="pdp-price">$0.00</p>
+          <p class="pdp-price tech-text" id="pdp-price">₹0.00</p>
         </div>
         
         <p class="pdp-description" id="pdp-description"></p>
@@ -46,7 +46,7 @@
           <div class="size-selector">
             <div class="custom-select-wrapper" id="size-dropdown">
               <button class="custom-select-trigger tech-text" id="size-trigger">
-                <span id="size-label">SELECT SIZE (US)</span>
+                <span id="size-label">SELECT SIZE (IND)</span>
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
               </button>
               <div class="custom-select-options" id="size-options">
@@ -79,7 +79,7 @@
       if(product) {
         document.title = `NØIR | ${product.name}`;
         document.getElementById('pdp-title').textContent = product.name;
-        document.getElementById('pdp-price').textContent = `$${product.price.toFixed(2)}`;
+        document.getElementById('pdp-price').textContent = `₹${product.price.toLocaleString('en-IN', {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
         document.getElementById('pdp-description').textContent = product.description;
         document.getElementById('pdp-materials').textContent = product.materials.join(' / ');
         document.getElementById('pdp-colors').textContent = product.colors.join(' / ');
