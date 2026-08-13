@@ -48,10 +48,10 @@
             <h2 class="form-section-title">03 PAYMENT</h2>
             <div class="input-stack">
               <input type="text" class="form-input tech-text" placeholder="CARDHOLDER NAME" required>
-              <input type="text" class="form-input tech-text" placeholder="CARD NUMBER" id="cc-num" pattern="\\d{16}" title="16 digit card number" required>
+              <input type="text" class="form-input tech-text" placeholder="CARD NUMBER" id="cc-num" pattern="(\d{4}[ \-]?){3}\d{4}" title="16 digit card number (spaces allowed)" required>
               <div class="input-row">
-                <input type="text" class="form-input tech-text" placeholder="MM/YY" pattern="\\d{2}/\\d{2}" title="MM/YY format" required>
-                <input type="text" class="form-input tech-text error-target" placeholder="CVV" id="cc-cvv" pattern="\\d{3,4}" required>
+                <input type="text" class="form-input tech-text" placeholder="MM/YY" pattern="\d{2}/\d{2}" title="MM/YY format" required>
+                <input type="text" class="form-input tech-text error-target" placeholder="CVV" id="cc-cvv" pattern="\d{3,4}" required>
               </div>
             </div>
             <div id="payment-error" class="error-msg tech-text" style="display:none;">INVALID CVV</div>

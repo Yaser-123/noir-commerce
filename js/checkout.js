@@ -117,4 +117,14 @@ document.addEventListener('DOMContentLoaded', () => {
     e.target.classList.remove('error-state');
     document.getElementById('payment-error').style.display = 'none';
   });
+
+  // Credit Card Auto-Formatter
+  const ccNumInput = document.getElementById('cc-num');
+  if (ccNumInput) {
+    ccNumInput.addEventListener('input', (e) => {
+      let value = e.target.value.replace(/\D/g, '');
+      if (value.length > 16) value = value.slice(0, 16);
+      e.target.value = value.replace(/(\d{4})(?=\d)/g, '$1 ');
+    });
+  }
 });
