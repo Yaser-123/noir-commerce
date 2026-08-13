@@ -15,6 +15,7 @@ export function loadHeader() {
     </header>
   `;
   document.body.insertAdjacentHTML('afterbegin', headerHTML);
+  window.dispatchEvent(new Event('headerLoaded'));
 }
 
 export function loadFooter() {

@@ -4,8 +4,9 @@ class CartManager {
   constructor() {
     this.items = JSON.parse(localStorage.getItem('noir_cart_items')) || [];
     
-    // Defer DOM updates slightly to ensure components are loaded
-    setTimeout(() => this.updateCartCount(), 0);
+    // Bind to DOM ready / header ready events
+    window.addEventListener('headerLoaded', () => this.updateCartCount());
+    window.addEventListener('cartUpdated', () => this.updateCartCount());
   }
 
   addItem(productId, size, quantity = 1) {
