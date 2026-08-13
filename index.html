@@ -50,10 +50,10 @@
 
     <section class="philosophy-section">
       <div class="container philosophy-grid">
-        <div class="philosophy-image">
+        <div class="philosophy-image scroll-fade">
           <img src="assets/images/nr-02-hero.jpg" alt="Structural Sneaker" loading="lazy">
         </div>
-        <div class="philosophy-content">
+        <div class="philosophy-content scroll-fade">
           <h2 class="section-title">FORM FOLLOWS<br>VOID</h2>
           <p class="tech-text">ENGINEERING DEVOID OF EXCESS</p>
           <p class="body-text" style="color: var(--color-text-secondary); margin-top: var(--spacing-6); max-width: 400px; font-size: 16px; line-height: 1.6;">NØIR strips away the unnecessary, leaving only absolute structural necessity. Our silhouettes are built on architectural geometry, combining matte carbon surfaces with engineered voids to create ultra-lightweight luxury footwear.</p>
@@ -61,7 +61,32 @@
       </div>
     </section>
 
-    <section class="collection-teaser">
+    <section class="engineering-section">
+      <div class="container engineering-grid">
+        <div class="engineering-content scroll-fade">
+          <h2 class="section-title">SYNTHETIC<br>PRECISION</h2>
+          <p class="tech-text">COMPUTATIONAL MATERIAL SCIENCE</p>
+          <p class="body-text" style="color: var(--color-text-secondary); margin-top: var(--spacing-6); max-width: 400px; font-size: 16px; line-height: 1.6;">Every curve and void is computationally generated to distribute weight efficiently. By leveraging advanced synthetic polymers and structural mesh, we achieve unprecedented durability without compromising the stark, monolithic aesthetic.</p>
+        </div>
+        <div class="engineering-image scroll-fade">
+          <img src="assets/images/nr-03-hero.jpg" alt="Engineering Detail" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <section class="material-showcase">
+      <div class="container scroll-fade">
+        <div class="material-banner">
+          <img src="assets/images/nr-01-hero.jpg" alt="Material Showcase" loading="lazy" class="full-width-img">
+          <div class="material-overlay">
+            <h2 class="section-title">MATTE CARBON</h2>
+            <p class="tech-text">SIGNATURE TEXTURE</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="collection-teaser scroll-fade">
       <div class="container">
         <div class="teaser-header">
           <h2 class="section-title">THE ARCHIVE</h2>
@@ -99,6 +124,20 @@
           grid.appendChild(card);
         });
       }
+
+      // Scroll Animations
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+
+      document.querySelectorAll('.scroll-fade').forEach(el => {
+        observer.observe(el);
+      });
 
       loadFooter();
     });
