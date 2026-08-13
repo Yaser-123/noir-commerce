@@ -44,14 +44,19 @@
         
         <div class="pdp-actions">
           <div class="size-selector">
-            <select id="size-select" class="tech-text">
-              <option value="" disabled selected>SELECT SIZE (US)</option>
-              <option value="8">US 8</option>
-              <option value="9">US 9</option>
-              <option value="10">US 10</option>
-              <option value="11">US 11</option>
-              <option value="12">US 12</option>
-            </select>
+            <div class="custom-select-wrapper" id="size-dropdown">
+              <button class="custom-select-trigger tech-text" id="size-trigger">
+                <span id="size-label">SELECT SIZE (US)</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="custom-select-options" id="size-options">
+                <button class="custom-option tech-text" data-value="8">US 8</button>
+                <button class="custom-option tech-text" data-value="9">US 9</button>
+                <button class="custom-option tech-text" data-value="10">US 10</button>
+                <button class="custom-option tech-text" data-value="11">US 11</button>
+                <button class="custom-option tech-text" data-value="12">US 12</button>
+              </div>
+            </div>
           </div>
           <button id="add-to-cart-btn" class="btn-primary full-width">ADD TO CART</button>
         </div>
@@ -125,20 +130,43 @@
         sizeError.textContent = 'PLEASE SELECT A SIZE';
         document.querySelector('.size-selector').appendChild(sizeError);
         
-        const sizeSelect = document.getElementById('size-select');
-        sizeSelect.addEventListener('change', () => {
+        let selectedSize = null;
+        const sizeDropdown = document.getElementById('size-dropdown');
+        const sizeTrigger = document.getElementById('size-trigger');
+        const sizeLabel = document.getElementById('size-label');
+        const sizeOptions = document.querySelectorAll('.custom-option');
+
+        sizeTrigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          sizeDropdown.classList.toggle('open');
           sizeError.style.display = 'none';
-          sizeSelect.classList.remove('error-state');
+          sizeDropdown.classList.remove('error-state');
+        });
+
+        sizeOptions.forEach(option => {
+          option.addEventListener('click', (e) => {
+            e.stopPropagation();
+            selectedSize = option.getAttribute('data-value');
+            sizeLabel.textContent = option.textContent;
+            sizeOptions.forEach(opt => opt.classList.remove('selected'));
+            option.classList.add('selected');
+            sizeDropdown.classList.remove('open');
+          });
+        });
+
+        document.addEventListener('click', (e) => {
+          if (!sizeDropdown.contains(e.target)) {
+            sizeDropdown.classList.remove('open');
+          }
         });
 
         document.getElementById('add-to-cart-btn').addEventListener('click', () => {
-          const size = sizeSelect.value;
-          if(!size) {
+          if(!selectedSize) {
             sizeError.style.display = 'block';
-            sizeSelect.classList.add('error-state');
+            sizeDropdown.classList.add('error-state');
             return;
           }
-          cart.addItem(product.id, size, 1);
+          cart.addItem(product.id, selectedSize, 1);
           window.location.href = 'checkout.html'; // Direct to checkout/cart page flow
         });
       }
