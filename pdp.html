@@ -89,15 +89,31 @@
               camera-controls 
               rotation-per-second="15deg"
               interaction-prompt="none"
-              shadow-intensity="1.5"
+              shadow-intensity="2"
               shadow-softness="0.5"
-              exposure="1.4"
+              exposure="1.2"
               camera-orbit="45deg 75deg 105%"
-              variant-name="midnight"
               loading="lazy"
-              style="filter: grayscale(100%) contrast(1.25) brightness(1.15);">
+              id="pdp-3d">
             </model-viewer>
           `;
+          setTimeout(() => {
+            const pdpModel = document.getElementById('pdp-3d');
+            if(pdpModel) {
+              pdpModel.addEventListener('load', () => {
+                if (pdpModel.model && pdpModel.model.materials) {
+                  const materials = pdpModel.model.materials;
+                  materials.forEach(material => {
+                    if (material.pbrMetallicRoughness) {
+                      material.pbrMetallicRoughness.setBaseColorFactor([0.01, 0.01, 0.01, 1]);
+                      material.pbrMetallicRoughness.setMetallicFactor(0.7);
+                      material.pbrMetallicRoughness.setRoughnessFactor(0.3);
+                    }
+                  });
+                }
+              });
+            }
+          }, 50);
         } else {
           mediaContainer.innerHTML = `<img src="${product.images.hero}" alt="${product.name}" loading="lazy">`;
         }

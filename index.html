@@ -32,13 +32,12 @@
             camera-controls 
             rotation-per-second="15deg"
             interaction-prompt="none"
-            shadow-intensity="1.5"
+            shadow-intensity="2"
             shadow-softness="0.5"
-            exposure="1.4"
+            exposure="1.2"
             camera-orbit="45deg 75deg 105%"
-            variant-name="midnight"
             loading="lazy"
-            style="filter: grayscale(100%) contrast(1.25) brightness(1.15);">
+            id="hero-3d">
           </model-viewer>
           <div class="model-annotation tech-text">
             <span>DRAG TO ROTATE</span>
@@ -138,6 +137,23 @@
       document.querySelectorAll('.scroll-fade').forEach(el => {
         observer.observe(el);
       });
+
+      // Transform 3D Model Materials to NØIR aesthetic
+      const modelViewer = document.getElementById('hero-3d');
+      if (modelViewer) {
+        modelViewer.addEventListener('load', () => {
+          if (modelViewer.model && modelViewer.model.materials) {
+            const materials = modelViewer.model.materials;
+            materials.forEach(material => {
+              if (material.pbrMetallicRoughness) {
+                material.pbrMetallicRoughness.setBaseColorFactor([0.01, 0.01, 0.01, 1]);
+                material.pbrMetallicRoughness.setMetallicFactor(0.7);
+                material.pbrMetallicRoughness.setRoughnessFactor(0.3);
+              }
+            });
+          }
+        });
+      }
 
       loadFooter();
     });
