@@ -89,10 +89,10 @@
               camera-controls 
               rotation-per-second="15deg"
               interaction-prompt="none"
-              shadow-intensity="2"
-              shadow-softness="0.5"
-              exposure="1.2"
-              camera-orbit="45deg 75deg 105%"
+              shadow-intensity="2.5"
+              shadow-softness="1"
+              exposure="1.3"
+              camera-orbit="45deg 75deg 85%"
               loading="lazy"
               id="pdp-3d">
             </model-viewer>
@@ -106,8 +106,8 @@
                   materials.forEach(material => {
                     if (material.pbrMetallicRoughness) {
                       material.pbrMetallicRoughness.setBaseColorFactor([0.01, 0.01, 0.01, 1]);
-                      material.pbrMetallicRoughness.setMetallicFactor(0.7);
-                      material.pbrMetallicRoughness.setRoughnessFactor(0.3);
+                      material.pbrMetallicRoughness.setMetallicFactor(0.8);
+                      material.pbrMetallicRoughness.setRoughnessFactor(0.25);
                     }
                   });
                 }
