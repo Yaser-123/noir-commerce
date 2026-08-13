@@ -132,7 +132,7 @@
             observer.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.1, rootMargin: '0px 0px -150px 0px' });
+      }, { threshold: 0.15, rootMargin: '0px 0px -25% 0px' });
 
       document.querySelectorAll('.scroll-fade').forEach(el => {
         observer.observe(el);
