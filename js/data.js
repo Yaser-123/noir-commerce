@@ -40,5 +40,44 @@ export const products = [
       gallery: ["assets/images/nr-03-side.jpg"]
     },
     model3d: null
+  },
+  {
+    id: "nr-04-apx",
+    name: "NR-04 APEX",
+    price: 1350.00,
+    description: "High-top aggressive architectural sneaker boot. Engineered with heavy tread and tactical hardware for uncompromised utility.",
+    category: "SILHOUETTE",
+    colors: ["Gunmetal Black"],
+    materials: ["TACTICAL MESH", "MATTE HARDWARE", "VIBRAM SOLE"],
+    images: {
+      hero: "assets/images/nr-04-hero.jpg"
+    },
+    model3d: null
+  },
+  {
+    id: "nr-05-flw",
+    name: "NR-05 FLOW",
+    price: 680.00,
+    description: "Aerodynamic laceless luxury techwear. Fluid lines and minimalistic slip-on construction for ultimate ease of movement.",
+    category: "SILHOUETTE",
+    colors: ["Charcoal Grey"],
+    materials: ["AERODYNAMIC KNIT", "SEAMLESS TPU", "FOAM CUSHION"],
+    images: {
+      hero: "assets/images/nr-05-hero.jpg"
+    },
+    model3d: null
+  },
+  {
+    id: "nr-06-ttn",
+    name: "NR-06 TITAN",
+    price: 1850.00,
+    description: "Massive brutalist ultra-chunky techwear boot. Supported by an exo-skeleton frame for unparalleled stability.",
+    category: "SILHOUETTE",
+    colors: ["Cybernetic Black"],
+    materials: ["EXO-SKELETON FRAME", "METALLIC ALLOYS", "HEAVY RUBBER"],
+    images: {
+      hero: "assets/images/nr-06-hero.jpg"
+    },
+    model3d: null
   }
 ];
