@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NØIR | Privacy Policy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@400&family=Outfit:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/design-system.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <style>
+    .page-content {
+      padding-top: 150px;
+      padding-bottom: var(--spacing-32);
+      min-height: 80vh;
+    }
+  </style>
+</head>
+<body>
+  
+  <main class="page-content container">
+    <h1 class="display-title" style="margin-bottom: var(--spacing-8);">PRIVACY POLICY</h1>
+    <div class="body-text" style="color: var(--color-text-secondary); max-width: 800px; line-height: 1.6;">
+      <p style="margin-bottom: var(--spacing-6);">NØIR respects your privacy and is committed to protecting your personal data. This privacy policy informs you about how we look after your personal data when you visit our website.</p>
+      <h3 class="tech-text" style="color: var(--color-primary); margin-bottom: var(--spacing-2);">DATA COLLECTION</h3>
+      <p style="margin-bottom: var(--spacing-6);">We only collect data necessary to process your orders and improve your browsing experience. This includes contact information, shipping addresses, and anonymized usage analytics.</p>
+      <h3 class="tech-text" style="color: var(--color-primary); margin-bottom: var(--spacing-2);">DATA SECURITY</h3>
+      <p style="margin-bottom: var(--spacing-6);">All payment transactions are encrypted and processed through secure third-party gateways. We do not store your credit card information on our servers.</p>
+    </div>
+  </main>
+
+  <script type="module">
+    import { loadHeader, loadFooter } from './js/components.js';
+    import { cart } from './js/cart.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      loadHeader();
+      loadFooter();
+    });
+  </script>
+</body>
+</html>
