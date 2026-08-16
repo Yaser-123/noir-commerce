@@ -50,11 +50,11 @@
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
               </button>
               <div class="custom-select-options" id="size-options">
-                <button class="custom-option tech-text" data-value="8">US 8</button>
-                <button class="custom-option tech-text" data-value="9">US 9</button>
-                <button class="custom-option tech-text" data-value="10">US 10</button>
-                <button class="custom-option tech-text" data-value="11">US 11</button>
-                <button class="custom-option tech-text" data-value="12">US 12</button>
+                <button class="custom-option tech-text" data-value="7">IND 7</button>
+                <button class="custom-option tech-text" data-value="8">IND 8</button>
+                <button class="custom-option tech-text" data-value="9">IND 9</button>
+                <button class="custom-option tech-text" data-value="10">IND 10</button>
+                <button class="custom-option tech-text" data-value="11">IND 11</button>
               </div>
             </div>
           </div>
@@ -167,7 +167,18 @@
             return;
           }
           cart.addItem(product.id, selectedSize, 1);
-          window.location.href = 'checkout.html'; // Direct to checkout/cart page flow
+          
+          const btn = document.getElementById('add-to-cart-btn');
+          const originalText = btn.textContent;
+          btn.textContent = 'ADDED TO CART';
+          btn.style.backgroundColor = 'var(--color-text)';
+          btn.style.color = 'var(--color-bg)';
+          
+          setTimeout(() => {
+            btn.textContent = originalText;
+            btn.style.backgroundColor = '';
+            btn.style.color = '';
+          }, 2000);
         });
       }
       
